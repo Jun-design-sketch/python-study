@@ -8,7 +8,7 @@ def tokenizer(text):
   return tokens
 
 """
-  文字列をtokenizeし、２文字毎の登場回数を返却する
+  文字列をtokenizeし、2文字毎の登場確率を返却する
 """
 def training_bigram(text):
   tokenized = tokenizer(text)
@@ -19,6 +19,12 @@ def training_bigram(text):
       bi_tokens[key] = 1
     else:
       bi_tokens[key] += 1
+
+  total = sum(bi_tokens.values())
+
+  for key, count in bi_tokens.items():
+    bi_tokens[key] = count / total
+
   return bi_tokens
 
 text = "プログラム。。プロ。。ぐ、ら、む"
