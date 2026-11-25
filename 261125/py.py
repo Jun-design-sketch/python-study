@@ -3,10 +3,10 @@ def summarize_hours(records):
     for department, work_hours in records:
         try:
             hours = int(work_hours)
-            if hours >= 0:
-                answer[department] = answer.get(department, 0) + hours
         except (ValueError, TypeError):
             continue
+        if hours >= 0:
+            answer[department] = answer.get(department, 0) + hours
     return answer
 
 records1 = [
